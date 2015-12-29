@@ -31,3 +31,5 @@ to npm v2 behavior and nesting the new, different, module B version
 dependency under the module that requires it -- in this case, module C.
 
 ![nested dep](/images/npm3deps4.png)
+
+**However, please note at this time since there is not a direct dependency on B in your package.json, a build server (doing a clean install) or doing a fresh install (e.g. someone building your source for the first time) may not end up with B v1.0 in the root consistently.** At this time there is no defined rule (highest version or lowest version) to ensure what will go in the root of node_modules so if you end up depending on it the safest approach would be to add it as a direct dependency (if you know you'll end up with more than one version).
